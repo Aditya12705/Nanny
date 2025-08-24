@@ -1,0 +1,7 @@
+streamlit
+pandas
+gdown
+Pillow
+rembg
+openpyxl
+zipfile36
