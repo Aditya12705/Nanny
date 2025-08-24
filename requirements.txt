@@ -5,3 +5,4 @@ Pillow
 rembg
 openpyxl
 zipfile36
+onnxruntime
