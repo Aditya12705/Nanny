@@ -53,13 +53,17 @@ def generate_nanny_profile(row, template_path, output_dir):
         template = Image.open(template_path).convert('RGBA')
         draw = ImageDraw.Draw(template)
 
+        FONT_PATH = "fonts/LiberationSans-Regular.ttf"
+        BOLD_FONT_PATH = "fonts/LiberationSans-Bold.ttf"
+        
         # Load fonts
         try:
-            title_font = ImageFont.truetype("arialbd.ttf", 55)
-            subtitle_font = ImageFont.truetype("arialbd.ttf", 30)
-            desc_font = ImageFont.truetype("arial.ttf", 24)
-            value_font = ImageFont.truetype("arialbd.ttf", 22)
-        except:
+            title_font = ImageFont.truetype(BOLD_FONT_PATH, 55)
+            subtitle_font = ImageFont.truetype(BOLD_FONT_PATH, 30)
+            desc_font = ImageFont.truetype(FONT_PATH, 24)
+            value_font = ImageFont.truetype(BOLD_FONT_PATH, 22)
+        except Exception as e:
+            st.warning(f"⚠️ Font load failed: {e}, using default font.")
             title_font = subtitle_font = desc_font = value_font = ImageFont.load_default()
 
         blue_color = (25, 25, 112)
@@ -155,3 +159,4 @@ if uploaded_file:
                         file_name="nanny_profiles.zip",
                         mime="application/zip"
                     )
+
